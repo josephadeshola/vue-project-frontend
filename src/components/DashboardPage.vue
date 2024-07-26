@@ -46,7 +46,7 @@ const dropdownClass = computed(() => {
   return dropdownVisible.value ? 'py-2 space-y-2' : 'hidden py-2 space-y-2';
 });
 
-
+// Methods
 const toggleSidebar = () => {
   sidebarVisible.value = !sidebarVisible.value;
 };
