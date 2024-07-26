@@ -42,13 +42,16 @@ const jobCategories = ref([
           >
         </a>
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
-          <RouterLink to="/register" class="text-sm hover:underline text-black"
+          <RouterLink
+            to="/login"
+            class="text-sm text-blue-600 dark:text-blue-500 font-semibold hover:underline"
+            >Login</RouterLink
+          >
+          <RouterLink to="/register" class="text-sm font-semibold hover:underline text-black"
             >Register</RouterLink
           >
-          <a
-            href="#"
-            class="text-sm text-blue-600 dark:text-blue-500 hover:underline"
-            >Login</a
+          <RouterLink to="/dashboard" class="text-sm font-semibold hover:underline text-black"
+            >Dashboard</RouterLink
           >
         </div>
       </div>

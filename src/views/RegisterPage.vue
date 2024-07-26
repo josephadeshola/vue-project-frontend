@@ -2,7 +2,14 @@
   <div
     class="bg-slate-200 h-screen md:h-auto md:block flex items-center mx-auto md:items-start justify-center px-3 py-1"
   >
-    <div class="w-full md:w-1/3 mx-auto p-4 shadow-lg bg-white rounded px-5">
+<div
+    class="absolute h-10 left-0 w-10 top-0 mt-3 ml-3 shadow-md cursor-pointer bg-white text-center rounded-full transition-transform duration-300 hover:translate-x-2 hover:translate-y-2"
+  >
+      <RouterLink to="/">
+    <i class="bi text-blue-700 bi-houses-fill text-2xl"></i>
+      </RouterLink>
+  </div>   
+ <div class="w-full md:w-1/3 mx-auto p-4 shadow-lg bg-white rounded px-5">
       <p class="text-center font-bold text-2xl">Register</p>
       <div class="py-3 px-5">
         <hr class="text-blue-500" />
@@ -170,9 +177,10 @@ import { required, minLength, email, sameAs } from "@vuelidate/validators";
 import useVuelidate from "@vuelidate/core";
 import { computed, ref } from "vue";
 import axios from "axios";
-import { RouterLink } from "vue-router";
+import { RouterLink,useRouter } from "vue-router";
 import { useToast } from "vue-toastification";
 
+const router = useRouter();
 const form = ref({
   name: "",
   email: "",
@@ -216,6 +224,9 @@ const register = async () => {
   const response = await axios.post("http://127.0.0.1:8000/api/register", userObject);
   if (response.status === 201) {
     toast.success("Registration successful!");
+    setTimeout(()=>{
+      router.push("/login");
+      }, 4000);
   } else {
     toast.error("Registration failed");
   }
