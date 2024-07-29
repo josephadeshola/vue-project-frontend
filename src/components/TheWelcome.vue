@@ -1,10 +1,10 @@
 <script setup>
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
+import WelcomeItem from "./WelcomeItem.vue";
+import DocumentationIcon from "./icons/IconDocumentation.vue";
+import ToolingIcon from "./icons/IconTooling.vue";
+import EcosystemIcon from "./icons/IconEcosystem.vue";
+import CommunityIcon from "./icons/IconCommunity.vue";
+import SupportIcon from "./icons/IconSupport.vue";
 
 import { ref } from "vue";
 
@@ -47,10 +47,14 @@ const jobCategories = ref([
             class="text-sm text-blue-600 dark:text-blue-500 font-semibold hover:underline"
             >Login</RouterLink
           >
-          <RouterLink to="/register" class="text-sm font-semibold hover:underline text-black"
+          <RouterLink
+            to="/register"
+            class="text-sm font-semibold hover:underline text-black"
             >Register</RouterLink
           >
-          <RouterLink to="/dashboard" class="text-sm font-semibold hover:underline text-black"
+          <RouterLink
+            to="/dashboard"
+            class="text-sm font-semibold hover:underline text-black"
             >Dashboard</RouterLink
           >
         </div>
@@ -58,7 +62,7 @@ const jobCategories = ref([
     </nav>
     <div class="relative pt-16">
       <img
-        class="w-full object-cover h-screen"
+        class="w-full object-cover md:h-screen h-96"
         src="https://img.freepik.com/premium-photo/serious-team-professionals-multiethnic-business-people-negotiating-modern-meeting-room_484651-23333.jpg?w=740"
         alt=""
       />
@@ -66,7 +70,7 @@ const jobCategories = ref([
         class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center z-0"
       >
         <div class="text-white text-center px-3">
-          <h1 class="text-4xl font-bold">
+          <h1 class="md:text-4xl text-2xl font-bold">
             Find Great Jobs to Build Your Bright Career
           </h1>
           <p class="mt-4">
@@ -101,14 +105,44 @@ const jobCategories = ref([
         </div>
       </div>
     </div>
-    <div class="text-center bg-blue-700 py-7 -mt-10">
-      <p class="md:text-4xl text-md text-white font-semibold mt-6">
+    <div class="text-center bg-blue-600 md:hidden block py-7">
+      <p class="md:text-4xl text-xl text-white font-semibold ">
         Unlock Your Career Potential
       </p>
       <p class="text-md text-white">
         Discover the perfect job opportunity for you.
       </p>
+      
     </div>
+    <div class="relative container-fluid md:top-3 md:block hidden -top-2">
+  <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 1440 320">
+    <path
+      fill="#73c2fb"
+      fill-opacity="1"
+      d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+<div class="relative container-fluid md:-mt-80 md:block hidden -mt-32">
+  <div class="text-center h-auto flex justify-center items-center">
+    <div class="absolute md:top-10">
+      <p class="md:text-4xl py-3 text-md text-white font-semibold mt-6">
+        Unlock Your Career Potential
+      </p>
+      <p class="text-xl text-white">
+        Discover the perfect job opportunity for you.
+      </p>
+    </div>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+    <path
+      fill="#1f75fe"
+      fill-opacity="1"
+      d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+    ></path>
+  </svg>
+</div>
+
 
     <p class="text-center font-bold text-2xl mt-10">Popular Category</p>
     <div class="text-center mx-auto flex justify-center">
@@ -123,88 +157,88 @@ const jobCategories = ref([
         {{ category.name }} ({{ category.count }})
       </div>
     </div>
-    <div class="md:mt-20 mx-auto  bg-gray-100">
+    <div class="md:mt-20 mx-auto bg-gray-100">
       <p class="font-bold text-2xl text-center pt-12">Recent Job Circulars</p>
-      <div class=" md:grid grid-cols-3 px-3  py-7 md:px-44 md:gap-x-5">
-      <div class="px-6 py-6 shadow-md rounded bg-white">
-        <div class="flex gap-5">
-          <img
-            src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-            class="h-10 rounded"
-            alt=""
-          />
-          <div>
-            <p class="font-bold text-sm">Darkento Ltd.</p>
-            <p class="text-sm">New York,USA</p>
+      <div class="md:grid grid-cols-3 px-3 py-7 md:px-44 md:gap-x-5">
+        <div class="px-6 py-6 shadow-md rounded bg-white">
+          <div class="flex gap-5">
+            <img
+              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
+              class="h-10 rounded"
+              alt=""
+            />
+            <div>
+              <p class="font-bold text-sm">Darkento Ltd.</p>
+              <p class="text-sm">New York,USA</p>
+            </div>
+          </div>
+          <p class="font-bold mt-2 text-md">Front-end Developer</p>
+          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
+          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
+          <div class="flex gap-10 mt-5">
+            <p class="font-bold text-xl">
+              $5000<span class="text-sm font-light">/monthly</span>
+            </p>
+            <button
+              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+            >
+              Apply Now
+            </button>
           </div>
         </div>
-        <p class="font-bold mt-2 text-md">Front-end Developer</p>
-        <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-        <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-        <div class="flex gap-10 mt-5">
-          <p class="font-bold text-xl">
-            $5000<span class="text-sm font-light">/monthly</span>
-          </p>
-          <button
-            class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-          >
-            Apply Now
-          </button>
-        </div>
-      </div>
-      <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
-        <div class="flex gap-5">
-          <img
-            src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-            class="h-10 rounded"
-            alt=""
-          />
-          <div>
-            <p class="font-bold text-sm">Darkento Ltd.</p>
-            <p class="text-sm">New York,USA</p>
+        <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
+          <div class="flex gap-5">
+            <img
+              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
+              class="h-10 rounded"
+              alt=""
+            />
+            <div>
+              <p class="font-bold text-sm">Darkento Ltd.</p>
+              <p class="text-sm">New York,USA</p>
+            </div>
+          </div>
+          <p class="font-bold mt-2 text-md">Front-end Developer</p>
+          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
+          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
+          <div class="flex gap-10 mt-5">
+            <p class="font-bold text-xl">
+              $5000<span class="text-sm font-light">/monthly</span>
+            </p>
+            <button
+              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+            >
+              Apply Now
+            </button>
           </div>
         </div>
-        <p class="font-bold mt-2 text-md">Front-end Developer</p>
-        <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-        <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-        <div class="flex gap-10 mt-5">
-          <p class="font-bold text-xl">
-            $5000<span class="text-sm font-light">/monthly</span>
-          </p>
-          <button
-            class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-          >
-            Apply Now
-          </button>
-        </div>
-      </div>
-      <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
-        <div class="flex gap-5">
-          <img
-            src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-            class="h-10 rounded"
-            alt=""
-          />
-          <div>
-            <p class="font-bold text-sm">Darkento Ltd.</p>
-            <p class="text-sm">New York,USA</p>
+        <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
+          <div class="flex gap-5">
+            <img
+              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
+              class="h-10 rounded"
+              alt=""
+            />
+            <div>
+              <p class="font-bold text-sm">Darkento Ltd.</p>
+              <p class="text-sm">New York,USA</p>
+            </div>
+          </div>
+          <p class="font-bold mt-2 text-md">Front-end Developer</p>
+          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
+          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
+          <div class="flex gap-10 mt-5">
+            <p class="font-bold text-xl">
+              $5000<span class="text-sm font-light">/monthly</span>
+            </p>
+            <button
+              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+            >
+              Apply Now
+            </button>
           </div>
         </div>
-        <p class="font-bold mt-2 text-md">Front-end Developer</p>
-        <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-        <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-        <div class="flex gap-10 mt-5">
-          <p class="font-bold text-xl">
-            $5000<span class="text-sm font-light">/monthly</span>
-          </p>
-          <button
-            class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-          >
-            Apply Now
-          </button>
-        </div>
       </div>
-    </div>
     </div>
   </div>
 </template>

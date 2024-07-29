@@ -7,12 +7,12 @@
     </div>
   </div>
   <div class="p-4 sm:ml-64">
-    <p>CREATE JOB</p>
-    <div class="min-h-screen flex py-7 items-center justify-center">
+    <div class="min-h-screen flex py-12 items-center justify-center">
       <div class="bg-white p-8 rounded shadow-md max-w-xl w-full">
-        <h2 class="text-2xl font-bold mb-6 text-center">Create Job Listing</h2>
-        <form @submit.prevent="submitForm" class="space-y-6">
-          <!-- Job Title -->
+        <div class="text-center bg-blue-600 py-1 rounded text-white mb-6">
+            <p class="text-2xl font-semibold ">Create Job Listingn</p>
+          </div>
+        <form @submit.prevent="goToCompanyInfo" class="space-y-6">
           <div class="flex gap-5 justify-between">
             <div class="w-full">
               <label for="title" class="block text-sm font-medium text-gray-700"
@@ -29,7 +29,6 @@
               />
             </div>
 
-            <!-- Company Name -->
             <div class="w-full">
               <label
                 for="company"
@@ -47,7 +46,7 @@
               />
             </div>
           </div>
-          <!-- Location -->
+
           <div class="flex gap-5 justify-between">
             <div class="w-full">
               <label
@@ -66,7 +65,6 @@
               />
             </div>
 
-            <!-- Job Type -->
             <div class="w-full">
               <label
                 for="jobType"
@@ -88,7 +86,6 @@
             </div>
           </div>
 
-          <!-- Salary -->
           <div class="w-full">
             <label for="salary" class="block text-sm font-medium text-gray-700"
               >Salary</label
@@ -104,7 +101,6 @@
             />
           </div>
 
-          <!-- Description -->
           <div>
             <label
               for="description"
@@ -122,13 +118,120 @@
             ></textarea>
           </div>
 
+          <div class="text-center bg-blue-600 py-1 rounded text-white">
+            <p class="text-2xl font-semibold ">Company Info & Location</p>
+          </div>
+
+          <div class="w-full">
+            <label
+              for="companyName"
+              class="block text-sm font-medium text-gray-700"
+              >Company Name</label
+            >
+            <input
+              id="companyName"
+              v-model="form.companyName"
+              name="companyName"
+              type="text"
+              class="mt-1 block w-full shadow-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter company name"
+              required
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="flex justify-between gap-5">
+            <div class="w-full">
+              <label for="email" class="block text-sm font-medium text-gray-700"
+                >Company Email</label
+              >
+              <input
+                id="email"
+                v-model="form.email"
+                name="email"
+                type="text"
+                class="mt-1 block w-full shadow-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="Enter company email"
+                required
+              />
+            </div>
+            <!-- Phone -->
+            <div class="w-full">
+              <label for="phone" class="block text-sm font-medium text-gray-700"
+                >Company Phone</label
+              >
+              <input
+                id="phone"
+                v-model="form.phone"
+                name="phone"
+                type="text"
+                class="mt-1 block w-full shadow-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="Enter company phone"
+                required
+              />
+            </div>
+          </div>
+          <!-- Address -->
+          <div class="flex justify-between gap-5">
+            <div class="w-full">
+              <label
+                for="address"
+                class="block text-sm font-medium text-gray-700"
+                >Company Address</label
+              >
+              <input
+                id="address"
+                v-model="form.address"
+                name="address"
+                type="text"
+                class="mt-1 block w-full shadow-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="Enter company address"
+                required
+              />
+            </div>
+            <div class="w-full">
+              <label
+                for="companyLocation"
+                class="block text-sm font-medium text-gray-700"
+                >Company Location</label
+              >
+              <input
+                id="companyLocation"
+                v-model="form.companyLocation"
+                name="companyLocation"
+                type="text"
+                class="mt-1 block w-full shadow-md px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="Enter company location"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Additional Info -->
+          <div>
+            <label
+              for="additionalInfo"
+              class="block text-sm font-medium text-gray-700"
+              >Additional Info</label
+            >
+            <textarea
+              id="additionalInfo"
+              v-model="form.additionalInfo"
+              name="additionalInfo"
+              rows="4"
+              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Enter any additional information"
+              required
+            ></textarea>
+          </div>
+
           <!-- Submit Button -->
           <div>
             <button
               type="submit"
               class="w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
-              Create Job Listing
+              Submit
             </button>
           </div>
         </form>
@@ -152,9 +255,9 @@ const form = ref({
 });
 
 // Method to handle form submission
-const submitForm = () => {
+const goToCompanyInfo = () => {
   console.log("Form submitted", form.value);
-  // Add your form submission logic here
+  // Navigate to Company Info & Location step
 };
 </script>
 
