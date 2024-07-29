@@ -1,14 +1,9 @@
 <template>
   <SideBar />
-  <div class="md:h-14 fixed w-full bg-white shadow-lg">
-    <div class="flex justify-end gap-2 md:py-3 px-3">
-      <p>Welcome:</p>
-      <p class="text-blue-900 font-bold">Ayomide Adeshola</p>
-    </div>
-  </div>
+  
   <div class="p-4 sm:ml-64">
-    <div class="min-h-screen flex py-12 items-center justify-center">
-      <div class="bg-white p-8 rounded shadow-md max-w-xl w-full">
+    <div class="min-h-screen flex py-5 items-center justify-center">
+      <div class="bg-white p-8 rounded mt-7 shadow-md max-w-xl w-full">
         <div class="text-center bg-blue-600 py-1 rounded text-white mb-6">
             <p class="md:text-2xl text-md font-semibold ">Create Job Listing</p>
           </div>
