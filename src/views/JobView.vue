@@ -10,10 +10,10 @@
     <div class="min-h-screen flex py-12 items-center justify-center">
       <div class="bg-white p-8 rounded shadow-md max-w-xl w-full">
         <div class="text-center bg-blue-600 py-1 rounded text-white mb-6">
-            <p class="text-2xl font-semibold ">Create Job Listingn</p>
+            <p class="md:text-2xl text-md font-semibold ">Create Job Listing</p>
           </div>
         <form @submit.prevent="goToCompanyInfo" class="space-y-6">
-          <div class="flex gap-5 justify-between">
+          <div class="flex md:gap-5 gap-2 justify-between">
             <div class="w-full">
               <label for="title" class="block text-sm font-medium text-gray-700"
                 >Job Title</label
@@ -47,7 +47,7 @@
             </div>
           </div>
 
-          <div class="flex gap-5 justify-between">
+          <div class="flex md:gap-5 gap-2 justify-between">
             <div class="w-full">
               <label
                 for="location"
@@ -119,7 +119,7 @@
           </div>
 
           <div class="text-center bg-blue-600 py-1 rounded text-white">
-            <p class="text-2xl font-semibold ">Company Info & Location</p>
+            <p class="md:text-2xl text-md  font-semibold ">Company Info & Location</p>
           </div>
 
           <div class="w-full">
