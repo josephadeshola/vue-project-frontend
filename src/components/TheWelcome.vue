@@ -33,11 +33,11 @@ const jobCategories = ref([
         >
           <img
             src="https://flowbite.com/docs/images/logo.svg"
-            class="h-8"
+            class="h-5 md:h-8"
             alt="Flowbite Logo"
           />
           <span
-            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-black"
+            class="self-center md:text-2xl text-sm font-semibold whitespace-nowrap dark:text-black"
             >JobList</span
           >
         </a>
