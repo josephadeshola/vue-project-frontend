@@ -26,17 +26,17 @@
 
             <div class="w-full">
               <label
-                for="company"
+                for="requirement"
                 class="block text-sm font-medium text-gray-700"
-                >Company Name</label
+                >Requirements</label
               >
               <input
-                id="company"
-                v-model="form.company"
-                name="company"
+                id="requirement"
+                v-model="form.requirement"
+                name="requirement"
                 type="text"
                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                placeholder="Enter company name"
+                placeholder="Enter requirement name"
                 required
               />
             </div>
@@ -238,21 +238,53 @@
 <script setup>
 import SideBar from "../components/SideBar.vue";
 import { ref } from "vue";
+import axios from "axios";
 
 // Form data
 const form = ref({
   title: "",
-  company: "",
+  requirement: "",
   location: "",
   jobType: "",
   salary: "",
   description: "",
+  companyName: "",
+  email: "",
+  phone: "",
+  address: "",
+  companyLocation: "",
+  additionalInfo:""
+
 });
 
 // Method to handle form submission
-const goToCompanyInfo = () => {
-  console.log("Form submitted", form.value);
-  // Navigate to Company Info & Location step
+
+const goToCompanyInfo = async () => {
+  const user_id =JSON.parse(localStorage.getItem('user'));
+ const userObject = {
+    user_id: user_id.id,
+    title: form.value.title,
+    requirement: form.value.requirement,
+    location: form.value.location,
+    jobType: form.value.jobType,
+    salary: form.value.salary,
+    description: form.value.description,
+    companyName: form.value.companyName,
+    email: form.value.email,
+    phone: form.value.phone,
+    address: form.value.address,
+    companyLocation: form.value.companyLocation,
+    additionalInfo: form.value.additionalInfo
+  };
+
+   try {
+    const response = await axios.post('http://127.0.0.1:8000/api/job', userObject);
+    console.log("Form submitted successfully", response.data);
+  } catch (error) {
+    console.error("Error submitting form", error);
+  
+  }
+  
 };
 </script>
 

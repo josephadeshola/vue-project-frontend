@@ -2,7 +2,7 @@
    <div v-if="sidebarVisible" class="fixed inset-0 z-30 bg-black opacity-50" @click="dismissSidebar"></div>
     
     <!-- Sidebar Toggle Button -->
-    <div class="bg-white flex justify-between md:justify-end shadow-lg fixed w-full">
+    <div class="bg-white flex h-14 border-b-2 border-b-blue-500 justify-between md:justify-end shadow-lg fixed w-full">
     <button @click="toggleSidebar" aria-controls="sidebar-multi-level-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
       <span class="sr-only">Open sidebar</span>
       <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -18,7 +18,21 @@
     <!-- Sidebar -->
     <aside :class="sidebarClass" id="sidebar-multi-level-sidebar" aria-label="Sidebar">
       <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-blue-700">
-        <ul class="space-y-2 font-medium">
+         <div className="bg-slate-300 rounded flex items-center justify-between p-4 space-x-4">
+            <div className="flex items-center space-x-4">
+              <img
+                className="h-12 w-12 rounded-full"
+                src="https://img.freepik.com/free-photo/casual-young-african-man-smiling-isolated-white_93675-128895.jpg?t=st=1717687386~exp=1717690986~hmac=a571c165c5ccf3f51f03de509900bd0ad97745d46ded5874df9ff38e9ab5deff&w=740"
+                alt="Profile"
+              />
+              <div>
+                <p className="text-black text-[12px] break-all font-semibold">
+                  adeshola12j5d@gmail.com
+                </p>
+              </div>
+            </div>
+          </div>
+        <ul class="space-y-2 mt-5 font-medium">
           <li>
             <RouterLink to="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900  group">
               <i class="bi bi-houses-fill text-white"></i>
@@ -106,7 +120,7 @@ export default {
     },
     fetchUserName() {
       const user = JSON.parse(localStorage.getItem('user'));
-      console.log(user);
+      // console.log(user);
       if (user && user.name) {
         this.userName = user.name;
       } else {
