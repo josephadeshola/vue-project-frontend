@@ -36,22 +36,21 @@
             <div class="text-sm">{{ job.requirement }}</div>
             <div class="gap-10 mt-5">
               <p class="font-bold mb-4 text-xl">
-                ${{ job.salary
-                }}<span class="text-sm font-light">/monthly</span>
+                ${{ job.salary }}<span class="text-sm font-light">/monthly</span>
               </p>
               <div class=" flex gap-3 justify-center">
-              <RouterLink
-                :to="{ name: 'JobDetails', params: { id: job.id } }"
-                class="bg-blue-700 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-blue-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-              >
-                Edit Post
-              </RouterLink>
-              <RouterLink
-                :to="{ name: 'JobDetails', params: { id: job.id } }"
-                class="bg-red-500 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-red-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-              >
-                Delete Post
-              </RouterLink>
+                <RouterLink
+                  :to="{ name: 'JobDetails', params: { id: job.id } }"
+                  class="bg-blue-700 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-blue-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+                >
+                  Edit Post
+                </RouterLink>
+                <button
+                  @click="deleteJob(job.id)"
+                  class="bg-red-500 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-red-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+                >
+                  Delete Post
+                </button>
               </div>
             </div>
           </div>
@@ -65,7 +64,7 @@
 import SideBar from "../components/SideBar.vue";
 import axios from "axios";
 import { ref, onMounted } from "vue";
-import SideBarVue from "./SideBar.vue";
+import Swal from 'sweetalert2'; // Ensure Swal is correctly imported
 
 const userJobs = ref([]);
 const loading = ref(true);
@@ -76,9 +75,9 @@ const fetchUserJobs = async () => {
 
   try {
     const response = await axios.get(
-      `http://127.0.0.1:8000/api/jobs/user/${userId.id }`
+      `http://127.0.0.1:8000/api/jobs/user/${userId.id}`
     );
-    userJobs.value = response.data.jobs
+    userJobs.value = response.data.jobs;
   } catch (error) {
     if (error.response && error.response.status === 404) {
       userJobs.value = [];
@@ -89,6 +88,38 @@ const fetchUserJobs = async () => {
     }
   } finally {
     loading.value = false;
+  }
+};
+
+const deleteJob = async (jobId) => {
+  try {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    });
+
+    if (result.isConfirmed) {
+      const res = await axios.delete(`http://127.0.0.1:8000/api/jobs/${jobId}`);
+      console.log(res);
+      userJobs.value = userJobs.value.filter(job => job.id !== jobId);
+      Swal.fire(
+        'Deleted!',
+        'Your job post has been deleted.',
+        'success'
+      );
+    }
+  } catch (error) {
+    console.error("Error deleting job:", error);
+    Swal.fire(
+      'Error!',
+      'An error occurred while deleting the job. Please try again later.',
+      'error'
+    );
   }
 };
 
