@@ -18,8 +18,9 @@
         <i class="bi text-blue-700 bi-houses-fill text-2xl"></i>
       </RouterLink>
     </div>
+    <div class="px-3">
     <div
-      class="w-full md:w-1/3 absolute top-1 left-0 right-0 mx-auto p-4 md:mt-12 mt-[100px] shadow-lg bg-white rounded px-5"
+      class="w-full md:w-1/3  mx-auto p-4 md:mt-12 shadow-lg bg-white rounded px-5"
     >
       <p class="text-center font-bold text-2xl">Register</p>
       <div class="py-3 px-5">
@@ -180,6 +181,7 @@
           </p>
         </div>
       </form>
+    </div>
     </div>
   </div>
 </template>
