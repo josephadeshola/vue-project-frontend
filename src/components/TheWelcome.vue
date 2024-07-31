@@ -5,7 +5,7 @@ import ToolingIcon from "./icons/IconTooling.vue";
 import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
-
+import ViewAll from "../components/ViewAll.vue";
 import { ref } from "vue";
 
 const jobCategories = ref([
@@ -37,7 +37,7 @@ const jobCategories = ref([
             alt="Flowbite Logo"
           />
           <span
-            class="self-center md:text-2xl text-sm  font-semibold whitespace-nowrap dark:text-black"
+            class="self-center md:text-2xl text-sm font-semibold whitespace-nowrap dark:text-black"
             >JobList</span
           >
         </a>
@@ -106,44 +106,41 @@ const jobCategories = ref([
       </div>
     </div>
     <div class="text-center bg-blue-600 md:hidden block py-7">
-      <p class="md:text-4xl text-xl text-white font-semibold ">
+      <p class="md:text-4xl text-xl text-white font-semibold">
         Unlock Your Career Potential
       </p>
       <p class="text-md text-white">
         Discover the perfect job opportunity for you.
       </p>
-      
     </div>
     <div class="relative container-fluid md:top-3 md:block hidden -top-2">
-  <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 1440 320">
-    <path
-      fill="#73c2fb"
-      fill-opacity="1"
-      d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
-    ></path>
-  </svg>
-</div>
-<div class="relative container-fluid md:-mt-80 md:block hidden -mt-32">
-  <div class="text-center h-auto flex justify-center items-center">
-    <div class="absolute md:top-10">
-      <p class="md:text-4xl py-3 text-md text-white font-semibold mt-6">
-        Unlock Your Career Potential
-      </p>
-      <p class="text-xl text-white">
-        Discover the perfect job opportunity for you.
-      </p>
+      <svg xmlns="http://www.w3.org/2000/svg" class="" viewBox="0 0 1440 320">
+        <path
+          fill="#73c2fb"
+          fill-opacity="1"
+          d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+        ></path>
+      </svg>
     </div>
-  </div>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path
-      fill="#1f75fe"
-      fill-opacity="1"
-      d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
-    ></path>
-  </svg>
-</div>
-
-
+    <div class="relative container-fluid md:-mt-80 md:block hidden -mt-32">
+      <div class="text-center h-auto flex justify-center items-center">
+        <div class="absolute md:top-10">
+          <p class="md:text-4xl py-3 text-md text-white font-semibold mt-6">
+            Unlock Your Career Potential
+          </p>
+          <p class="text-xl text-white">
+            Discover the perfect job opportunity for you.
+          </p>
+        </div>
+      </div>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <path
+          fill="#1f75fe"
+          fill-opacity="1"
+          d="M0,128L34.3,144C68.6,160,137,192,206,224C274.3,256,343,288,411,288C480,288,549,256,617,256C685.7,256,754,288,823,282.7C891.4,277,960,235,1029,234.7C1097.1,235,1166,277,1234,293.3C1302.9,309,1371,299,1406,293.3L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+        ></path>
+      </svg>
+    </div>
     <p class="text-center font-bold text-2xl mt-10">Popular Category</p>
     <div class="text-center mx-auto flex justify-center">
       <div class="bg-black h-1 w-52"></div>
@@ -239,6 +236,9 @@ const jobCategories = ref([
           </div>
         </div>
       </div>
+    </div>
+    <div class="md:px-44 bg-gray-100">
+      <ViewAll />
     </div>
   </div>
 </template>

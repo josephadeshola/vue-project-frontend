@@ -2,8 +2,10 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import RegisterPage from '../views/RegisterPage.vue';
 import LoginPage from '../views/LoginPage.vue';
+import ViewJobs from '../components/ViewJobs.vue'
 import JobView from '../views/JobView.vue';
 import DashboardPage from '../components/DashboardPage.vue';
+import ViewAll from '../components/ViewAll.vue';
 const routes = [
   {
     path: '/',
@@ -30,6 +32,16 @@ const routes = [
     name: 'dashboard',
     component: DashboardPage,
   },
+  {
+    path:"/view",
+    name:"view",
+    component:ViewJobs
+  },
+  {
+    path:"/view/all",
+    name:"all",
+    component:ViewAll
+  }
 ];
 
 const router = createRouter({

@@ -239,8 +239,10 @@
 import SideBar from "../components/SideBar.vue";
 import { ref } from "vue";
 import axios from "axios";
+import { useToast } from "vue-toastification";
 
 // Form data
+const toast = useToast();
 const form = ref({
   title: "",
   requirement: "",
@@ -280,6 +282,7 @@ const goToCompanyInfo = async () => {
    try {
     const response = await axios.post('http://127.0.0.1:8000/api/job', userObject);
     console.log("Form submitted successfully", response.data);
+      toast.success(response.data.message);
   } catch (error) {
     console.error("Error submitting form", error);
   
