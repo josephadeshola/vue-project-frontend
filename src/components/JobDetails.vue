@@ -1,0 +1,86 @@
+<template>
+  <SideBar />
+  <div class="md:p-4 p-3 sm:ml-64">
+    <div class="md:p-4 p-3 mt-12">
+      <div
+        class="absolut fixed h-10 left-0 md:left-auto w-10 top-14 mt-3 ml-3 shadow-md cursor-pointer bg-white text-center rounded-full transition-transform duration-300 hover:translate-x-2 hover:translate-y-2"
+      >
+        <RouterLink to="/view">
+          <i
+            class="bi text-blue-700 bi-arrow-left-circle-fill text-2xl shadow rounded-full text-center items-center"
+          ></i>
+        </RouterLink>
+      </div>
+      <div
+        v-if="job"
+        class="max-w-xl mx-auto mt-14 md:mt-5 bg-white shadow-md rounded md:p-6 p-3"
+      >
+        <div class="flex gap-5 mb-4">
+          <img
+            src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
+            class="h-20 rounded"
+            alt="Company Logo"
+          />
+          <div>
+            <h2 class="font-bold text-lg">{{ job.companyName }} Ltd.</h2>
+            <p class="text-gray-500">{{ job.location }}</p>
+          </div>
+        </div>
+        <h3 class="font-bold text-xl mb-2">{{ job.title }}</h3>
+        <p class="text-blue-700 font-semibold mb-4">{{ job.jobType }}</p>
+        <p class="mb-4">{{ job.requirement }}</p>
+        <p class="font-bold text-xl">
+          ${{ job.salary }}<span class="text-sm font-light">/monthly</span>
+        </p>
+        <div
+          class=" px-2 py-3 my-6 bg-gray-100 shadow rounded-md"
+        >
+          <p class="font-bold text-2xl">Job Details</p>
+          <hr class="mt-2 border border-blue-600" />
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Company Name</p>
+          <p>{{ job.companyName }}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Email</p>
+          <p>{{ job.email }}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Phone</p>
+          <p>{{ job.phone }}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Company Location</p>
+          <p>{{ job.companyLocation }}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Address</p>
+          <p>{{ job.address }}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">description</p>
+          <p>{{ job.description}}</p>
+        </div>
+        <button class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md">Apply Now</button>
+      </div>
+      <div v-else class="text-center">Loading...</div>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import axios from "axios";
+import SideBar from "../components/SideBar.vue";
+
+const job = ref(null);
+const route = useRoute();
+
+const fetchJobDetails = async (id) => {
+  try {
+    const response = await axios.get(`http://127.0.0.1:8000/api/jobs/${id}`);
+    console.log(response);
+    job.value = response.data.job;
+  } catch (error) {
+    console.error("Error fetching job details:", error);
+  }
+};
+
+onMounted(() => {
+  fetchJobDetails(route.params.id);
+});
+</script>
+
+<style scoped>
+/* Add custom styles here */
+</style>
