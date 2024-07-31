@@ -52,7 +52,7 @@
         </div>
         <button class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md">Apply Now</button>
       </div>
-      <div v-else class="text-center">Loading...</div>
+      <div v-else class="flex justify-center items-center h-screen">Loading...</div>
     </div>
   </div>
 </template>

@@ -1,5 +1,7 @@
 <template>
-  <div class="md:grid grid-cols-3 md:gap-4">
+  <div v-if="loading" class="flex justify-center items-center h-screen">Loading...</div>
+  <div v-else class="md:grid grid-cols-3 md:gap-4">
+
     <div
       v-for="job in jobs"
       :key="job.id"
@@ -39,6 +41,7 @@ import axios from "axios";
 import { ref, onMounted } from "vue";
 
 const jobs = ref([]);
+const loading = ref(true);
 const fetchJobs = async () => {
   const token = localStorage.getItem("token");
 
@@ -47,6 +50,9 @@ const fetchJobs = async () => {
     jobs.value = response.data.jobs;
   } catch (error) {
     console.error("Error fetching jobs:", error);
+  }
+   finally {
+    loading.value = false;
   }
 };
 onMounted(fetchJobs);

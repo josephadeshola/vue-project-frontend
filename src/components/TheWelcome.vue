@@ -154,91 +154,53 @@ const jobCategories = ref([
         {{ category.name }} ({{ category.count }})
       </div>
     </div>
-    <div class="md:mt-20 mx-auto bg-gray-100">
-      <p class="font-bold text-2xl text-center pt-12">Recent Job Circulars</p>
-      <div class="md:grid grid-cols-3 px-3 py-7 md:px-44 md:gap-x-5">
-        <div class="px-6 py-6 shadow-md rounded bg-white">
-          <div class="flex gap-5">
-            <img
-              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-              class="h-10 rounded"
-              alt=""
-            />
-            <div>
-              <p class="font-bold text-sm">Darkento Ltd.</p>
-              <p class="text-sm">New York,USA</p>
-            </div>
-          </div>
-          <p class="font-bold mt-2 text-md">Front-end Developer</p>
-          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-          <div class="flex gap-10 mt-5">
-            <p class="font-bold text-xl">
-              $5000<span class="text-sm font-light">/monthly</span>
-            </p>
-            <button
-              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-            >
-              Apply Now
-            </button>
-          </div>
-        </div>
-        <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
-          <div class="flex gap-5">
-            <img
-              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-              class="h-10 rounded"
-              alt=""
-            />
-            <div>
-              <p class="font-bold text-sm">Darkento Ltd.</p>
-              <p class="text-sm">New York,USA</p>
-            </div>
-          </div>
-          <p class="font-bold mt-2 text-md">Front-end Developer</p>
-          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-          <div class="flex gap-10 mt-5">
-            <p class="font-bold text-xl">
-              $5000<span class="text-sm font-light">/monthly</span>
-            </p>
-            <button
-              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-            >
-              Apply Now
-            </button>
-          </div>
-        </div>
-        <div class="px-6 py-6 shadow-md mt-3 md:mt-0 rounded bg-white">
-          <div class="flex gap-5">
-            <img
-              src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-              class="h-10 rounded"
-              alt=""
-            />
-            <div>
-              <p class="font-bold text-sm">Darkento Ltd.</p>
-              <p class="text-sm">New York,USA</p>
-            </div>
-          </div>
-          <p class="font-bold mt-2 text-md">Front-end Developer</p>
-          <p class="text-sm text-green-500 py-2 font-bold">Full-time</p>
-          <div class="text-sm">CSS3,HTML5,javascript,Bootstrap,jQuery</div>
-          <div class="flex gap-10 mt-5">
-            <p class="font-bold text-xl">
-              $5000<span class="text-sm font-light">/monthly</span>
-            </p>
-            <button
-              class="bg-green-500 px-4 py-2 rounded-md text-md transition hover:text-green-500 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-            >
-              Apply Now
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="md:px-44 bg-gray-100">
+
+    <div class="md:px-44 pb-14 md:mt-20 mx-auto py-7 px-4 mt-7 bg-gray-100">
+      <p class="font-bold text-2xl mb-5 text-center">Recent Job Circulars</p>
       <ViewAll />
     </div>
   </div>
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-wrap justify-between">
+       
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+          <h5 class="font-bold text-lg mb-2">Company Name</h5>
+          <p class="text-gray-400">
+            Address: 123 Main Street, City, State
+          </p>
+          <p class="text-gray-400">Email: josephay125d@gmail.com</p>
+          <p class="text-gray-400">Phone: +234 8069697526</p>
+        </div>
+
+     
+        <div class="w-full md:w-1/3 mb-6 md:mb-0">
+          <h5 class="font-bold text-lg mb-2">Quick Links</h5>
+          <ul class="list-none">
+            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Jobs</a></li>
+            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="w-full md:w-1/3">
+          <h5 class="font-bold text-lg mb-2">Follow Us</h5>
+          <div class="flex space-x-4">
+            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f">Face Book</i></a>
+            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white"><i class="fab fa-twitter">Linkedin</i></a>
+            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in">Twitter</i></a>
+            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white"><i class="fab fa-instagram">Instagram</i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 border-t border-gray-700 pt-4">
+        <p class="text-center text-gray-500">
+          &copy; {{ new Date().getFullYear() }} Company Name. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </footer>
 </template>
