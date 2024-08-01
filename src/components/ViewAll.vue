@@ -1,5 +1,13 @@
 <template>
-  <div v-if="loading" class="flex justify-center items-center h-screen">Loading...</div>
+  <div v-if="loading" class="flex justify-center items-center h-screen">
+<div class="loader16">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+</div>
   <div v-else class="md:grid grid-cols-3 md:gap-4">
 
     <div
@@ -60,4 +68,58 @@ onMounted(fetchJobs);
 
 
 <style>
+
+.loader16 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loader16 span {
+  height: 20px;
+  width: 20px;
+  margin: 4px;
+  border-radius: 10px;
+  background-color: #a29bfe; 
+  animation: loader16-animation 1.5s infinite ease-in-out;
+}
+
+.loader16 span:last-child {
+  margin-right: 0;
+}
+
+.loader16 span:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.loader16 span:nth-child(2) {
+  animation-delay: -0.1s;
+}
+
+.loader16 span:nth-child(3) {
+  animation-delay: 0.1s;
+}
+
+@keyframes loader16-animation {
+  0% {
+    transform: scale(0.8);
+    background-color: #a29bfe; 
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+  }
+
+  50% {
+    transform: scale(1.2);
+    background-color: #6c5ce7; 
+    box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); 
+  }
+
+  100% {
+    transform: scale(0.8);
+    background-color: #a29bfe; 
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+  }
+}
+
 </style>
