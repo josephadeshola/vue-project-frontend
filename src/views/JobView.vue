@@ -3,7 +3,7 @@
   
   <div class="p-4 sm:ml-64">
     <div class="min-h-screen flex py-5 items-center justify-center">
-      <div class="bg-white p-8 rounded mt-7 shadow-md max-w-xl w-full">
+      <div class="bg-white md:p-8 p-4 rounded mt-7 shadow-md max-w-xl w-full">
         <div class="text-center bg-blue-600 py-1 rounded text-white mb-6">
             <p class="md:text-2xl text-md font-semibold ">Create Job Listing</p>
           </div>

@@ -10,6 +10,13 @@
         ></path>
       </svg>
     </div>
+      <div
+      class="absolut fixed h-10 left-0 w-10 top-0 mt-3 ml-3 shadow-md cursor-pointer bg-white text-center rounded-full transition-transform duration-300 hover:translate-x-2 hover:translate-y-2"
+    >
+      <RouterLink to="/">
+        <i class="bi text-blue-700 bi-houses-fill text-2xl"></i>
+      </RouterLink>
+    </div>
     <div class="max-w-md w-full p-4 shadow-lg bg-white rounded relative z-30">
       <p class="text-center font-bold text-3xl">Login Here</p>
       <div class="py-3 px-5">

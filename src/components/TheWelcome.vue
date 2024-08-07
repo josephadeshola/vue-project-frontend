@@ -6,10 +6,32 @@ import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
 import ViewAll from "../components/ViewAll.vue";
-import { onMounted, ref } from "vue";
-import { useSearchJob } from "../stores/searchJob.js";
-import { useRoute, useRouter } from "vue-router";
+import { ref } from "vue";
 
+// Define reactive state
+const query = ref('');
+const location = ref('');
+console.log(location);
+
+const jobs = ref([]);
+
+// Function to search jobs
+async function searchJobs() {
+  try {
+    const response = await fetch(`http://127.0.0.1:8000/api/jobs/search?q=${encodeURIComponent(query.value)}&location=${encodeURIComponent(location.value)}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    console.log(data);
+    
+    jobs.value = data;
+  } catch (error) {
+    console.error('Error fetching jobs:', error);
+  }
+}
+
+// Example usage
 const jobCategories = ref([
   { name: "Software Development", count: 376 },
   { name: "Accounting/Finance", count: 305 },
@@ -21,53 +43,15 @@ const jobCategories = ref([
   { name: "CyberSecurity", count: 37 },
   { name: "Data Science", count: 396 },
 ]);
-const { searches, jobSearch } = useSearchJob();
-const searchResults = ref([]);
-const router =useRouter();
+
+// Use router and route if needed
+import { useRoute, useRouter } from "vue-router";
+const router = useRouter();
 const route = useRoute();
-const searchInput = ref({
-  title: "",
-  city: ""
-});
 
-const searchJobs = async () => {
-  const keyword = `${searchInput.value.title} ${searchInput.value.city}`.trim();
-
-  try {
-    await jobSearch(keyword);
-    searchResults.value = searches.value.data || [];
-    if (searchResults.value.length === 0) {
-      console.log('No jobs found for the search criteria.');
-    }
-  } catch (error) {
-    console.error('Error during job search:', error);
-  }
-
-  // Optionally, navigate to search results page or update the view
-  router.push("/job/search");
-};
-
-// const searchJobs = async () => {
-//   const keyword = `${searchInput.value.title} ${searchInput.value.city}`.trim();
-
-//   try {
-//     await jobSearch(keyword);
-//     searchResults.value = searches.value;
-//     if (searchResults.value.length === 0) {
-//       console.log('No jobs found for the search criteria.');
-//     }
-//   } catch (error) {
-//     console.error('Error during job search:', error);
-//   }
-
-//   // Optionally, navigate to search results page or update the view
-//   router.push("/job/search");
-// };
-
-onMounted(() => {
-  // Optionally, you could perform an initial job search or other setup here
-});
+// You can use router.push("/job/search") here if needed
 </script>
+
 
 <template>
   <div class="">
@@ -127,14 +111,14 @@ onMounted(() => {
           <div class="borde flex gap-2">
             <input
               type="text"
-              v-model="searchInput.title"
+              v-model="query"
               id="job-title"
               class="bg-blue-50 mt-4 py-4 border border-blue-500 text-black placeholder-blue-700 dark:placeholder-blue-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-blue-500"
               placeholder="Job title or keywords"
             />
             <input
               type="text"
-              v-model="searchInput.city"
+              v-model="location"
               id="city"
               class="bg-blue-50 mt-4 py-4 border border-blue-500 text-black placeholder-blue-700 dark:placeholder-blue-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-blue-500"
               placeholder="Choose location"
@@ -151,6 +135,14 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <!-- <ul v-if="jobs.length">
+      <li v-for="job in jobs" :key="job.id">
+        <h3>{{ job.title }}</h3>
+        <p>{{ job.location }}</p>
+        <p>{{ job.description }}</p>
+      </li>
+    </ul>
+    <p v-else>No jobs found.</p> -->
     <div class="text-center bg-blue-600 md:hidden block py-7">
       <p class="md:text-4xl text-xl text-white font-semibold">
         Unlock Your Career Potential
