@@ -6,7 +6,9 @@ import EcosystemIcon from "./icons/IconEcosystem.vue";
 import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
 import ViewAll from "../components/ViewAll.vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
+import { useSearchJob } from "../stores/searchJob.js";
+import { useRoute, useRouter } from "vue-router";
 
 const jobCategories = ref([
   { name: "Software Development", count: 376 },
@@ -19,6 +21,52 @@ const jobCategories = ref([
   { name: "CyberSecurity", count: 37 },
   { name: "Data Science", count: 396 },
 ]);
+const { searches, jobSearch } = useSearchJob();
+const searchResults = ref([]);
+const router =useRouter();
+const route = useRoute();
+const searchInput = ref({
+  title: "",
+  city: ""
+});
+
+const searchJobs = async () => {
+  const keyword = `${searchInput.value.title} ${searchInput.value.city}`.trim();
+
+  try {
+    await jobSearch(keyword);
+    searchResults.value = searches.value.data || [];
+    if (searchResults.value.length === 0) {
+      console.log('No jobs found for the search criteria.');
+    }
+  } catch (error) {
+    console.error('Error during job search:', error);
+  }
+
+  // Optionally, navigate to search results page or update the view
+  router.push("/job/search");
+};
+
+// const searchJobs = async () => {
+//   const keyword = `${searchInput.value.title} ${searchInput.value.city}`.trim();
+
+//   try {
+//     await jobSearch(keyword);
+//     searchResults.value = searches.value;
+//     if (searchResults.value.length === 0) {
+//       console.log('No jobs found for the search criteria.');
+//     }
+//   } catch (error) {
+//     console.error('Error during job search:', error);
+//   }
+
+//   // Optionally, navigate to search results page or update the view
+//   router.push("/job/search");
+// };
+
+onMounted(() => {
+  // Optionally, you could perform an initial job search or other setup here
+});
 </script>
 
 <template>
@@ -79,27 +127,25 @@ const jobCategories = ref([
           <div class="borde flex gap-2">
             <input
               type="text"
-              id="success"
+              v-model="searchInput.title"
+              id="job-title"
               class="bg-blue-50 mt-4 py-4 border border-blue-500 text-black placeholder-blue-700 dark:placeholder-blue-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-blue-500"
               placeholder="Job title or keywords"
             />
             <input
               type="text"
-              id="success"
+              v-model="searchInput.city"
+              id="city"
               class="bg-blue-50 mt-4 py-4 border border-blue-500 text-black placeholder-blue-700 dark:placeholder-blue-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-blue-500"
-              placeholder="Choose city"
-            />
-            <input
-              type="text"
-              id="success"
-              class="bg-blue-50 mt-4 py-4 border border-blue-500 text-black placeholder-blue-700 dark:placeholder-blue-500 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:border-blue-500"
-              placeholder="Category"
+              placeholder="Choose location"
             />
             <button
+              @click="searchJobs"
               type="button"
-              class="text-white bg-blue-700 w-10 h-10 mt-6 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              class="text-white bg-blue-700 w-56 h-12 mt-5 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               <i class="bi bi-search text-xl font-bold"></i>
+              <p class="text-md ms-1">search</p>
             </button>
           </div>
         </div>
@@ -163,42 +209,71 @@ const jobCategories = ref([
   <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-4">
       <div class="flex flex-wrap justify-between">
-       
         <div class="w-full md:w-1/3 mb-6 md:mb-0">
           <h5 class="font-bold text-lg mb-2">Company Name</h5>
-          <p class="text-gray-400">
-            Address: 123 Main Street, City, State
-          </p>
+          <p class="text-gray-400">Address: 123 Main Street, City, State</p>
           <p class="text-gray-400">Email: josephay125d@gmail.com</p>
           <p class="text-gray-400">Phone: +234 8069697526</p>
         </div>
 
-     
         <div class="w-full md:w-1/3 mb-6 md:mb-0">
           <h5 class="font-bold text-lg mb-2">Quick Links</h5>
           <ul class="list-none">
-            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
-            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Jobs</a></li>
-            <li class="mb-1"><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-            <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+            <li class="mb-1">
+              <a href="#" class="text-gray-400 hover:text-white">Home</a>
+            </li>
+            <li class="mb-1">
+              <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+            </li>
+            <li class="mb-1">
+              <a href="#" class="text-gray-400 hover:text-white">Jobs</a>
+            </li>
+            <li class="mb-1">
+              <a href="#" class="text-gray-400 hover:text-white">Contact</a>
+            </li>
+            <li>
+              <a href="#" class="text-gray-400 hover:text-white"
+                >Privacy Policy</a
+              >
+            </li>
           </ul>
         </div>
 
         <div class="w-full md:w-1/3">
           <h5 class="font-bold text-lg mb-2">Follow Us</h5>
           <div class="flex space-x-4">
-            <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f">Face Book</i></a>
-            <a href="#" aria-label="Twitter" class="text-gray-400 hover:text-white"><i class="fab fa-twitter">Linkedin</i></a>
-            <a href="#" aria-label="LinkedIn" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in">Twitter</i></a>
-            <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-white"><i class="fab fa-instagram">Instagram</i></a>
+            <a
+              href="#"
+              aria-label="Facebook"
+              class="text-gray-400 hover:text-white"
+              ><i class="fab fa-facebook-f">Face Book</i></a
+            >
+            <a
+              href="#"
+              aria-label="Twitter"
+              class="text-gray-400 hover:text-white"
+              ><i class="fab fa-twitter">Linkedin</i></a
+            >
+            <a
+              href="#"
+              aria-label="LinkedIn"
+              class="text-gray-400 hover:text-white"
+              ><i class="fab fa-linkedin-in">Twitter</i></a
+            >
+            <a
+              href="#"
+              aria-label="Instagram"
+              class="text-gray-400 hover:text-white"
+              ><i class="fab fa-instagram">Instagram</i></a
+            >
           </div>
         </div>
       </div>
 
       <div class="mt-8 border-t border-gray-700 pt-4">
         <p class="text-center text-gray-500">
-          &copy; {{ new Date().getFullYear() }} Company Name. All rights reserved.
+          &copy; {{ new Date().getFullYear() }} Company Name. All rights
+          reserved.
         </p>
       </div>
     </div>

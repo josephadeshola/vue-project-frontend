@@ -24,46 +24,49 @@
             </p>
           </div>
 
-          <div v-else class="md:grid grid-cols-3 md:gap-4">
-            <div
-              v-for="job in userJobs"
-              :key="job.id"
-              class="md:px-6 mt-4 px-5 md:mt-0 py-6 shadow-md rounded bg-white"
-            >
-              <div class="flex gap-5">
-                <img
-                  src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
-                  class="h-10 rounded"
-                  alt=""
-                />
-                <div>
-                  <p class="font-bold text-sm">{{ job.companyName }} Ltd.</p>
-                  <p class="text-sm">{{ job.location }}</p>
+          <div v-else>
+            <p class="font-bold text-2xl mb-5 text-blue-700">Posted Jobs</p>
+            <div class="md:grid grid-cols-3 md:gap-4">
+              <div
+                v-for="job in userJobs"
+                :key="job.id"
+                class="md:px-6 mt-4 px-5 md:mt-0 py-6 shadow-md rounded bg-white"
+              >
+                <div class="flex gap-5">
+                  <img
+                    src="https://img.freepik.com/premium-photo/best-logo-template-vector-icon-illustration-design-ai-generated_966797-13127.jpg?w=740"
+                    class="h-10 rounded"
+                    alt=""
+                  />
+                  <div>
+                    <p class="font-bold text-sm">{{ job.companyName }} Ltd.</p>
+                    <p class="text-sm">{{ job.location }}</p>
+                  </div>
                 </div>
-              </div>
-              <p class="font-bold mt-2 text-md">{{ job.title }}</p>
-              <p class="text-sm text-blue-700 py-2 font-bold">
-                {{ job.jobType }}
-              </p>
-              <div class="text-sm">{{ job.requirement }}</div>
-              <div class="gap-10 mt-5">
-                <p class="font-bold mb-4 text-xl">
-                  ${{ job.salary
-                  }}<span class="text-sm font-light">/monthly</span>
+                <p class="font-bold mt-2 text-md">{{ job.title }}</p>
+                <p class="text-sm text-blue-700 py-2 font-bold">
+                  {{ job.jobType }}
                 </p>
-                <div class="flex gap-3 justify-center">
-                  <button
-                    @click="openEditModal(job)"
-                    class="bg-blue-700 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-blue-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-                  >
-                    Edit Post
-                  </button>
-                  <button
-                    @click="deleteJob(job.id)"
-                    class="bg-red-500 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-red-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
-                  >
-                    Delete Post
-                  </button>
+                <div class="text-sm">{{ job.requirement }}</div>
+                <div class="gap-10 mt-5">
+                  <p class="font-bold mb-4 text-xl">
+                    ${{ job.salary
+                    }}<span class="text-sm font-light">/monthly</span>
+                  </p>
+                  <div class="flex gap-3 justify-center">
+                    <button
+                      @click="openEditModal(job)"
+                      class="bg-blue-700 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-blue-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+                    >
+                      Edit Post
+                    </button>
+                    <button
+                      @click="deleteJob(job.id)"
+                      class="bg-red-500 px-4 py-2 rounded-md text-sm md:text-[12px] transition hover:text-red-700 hover:shadow-md hover:bg-white duration-300 text-white font-medium"
+                    >
+                      Delete Post
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -287,7 +290,7 @@
 import SideBar from "../components/SideBar.vue";
 import axios from "axios";
 import { ref, onMounted } from "vue";
-import Swal from "sweetalert2"; // Ensure Swal is correctly imported
+import Swal from "sweetalert2";
 
 const userJobs = ref([]);
 const loading = ref(true);
@@ -346,7 +349,7 @@ const deleteJob = async (jobId) => {
 };
 
 const openEditModal = (job) => {
-  editJob.value = { ...job }; // Pre-fill the modal with job details
+  editJob.value = { ...job };
   showEditModal.value = true;
 };
 
@@ -378,7 +381,6 @@ const updateJob = async () => {
 onMounted(fetchUserJobs);
 </script>
 <style scoped>
-
 .loader16 {
   display: flex;
   align-items: center;
@@ -392,7 +394,7 @@ onMounted(fetchUserJobs);
   width: 20px;
   margin: 4px;
   border-radius: 10px;
-  background-color: #a29bfe; 
+  background-color: #a29bfe;
   animation: loader16-animation 1.5s infinite ease-in-out;
 }
 
@@ -415,21 +417,20 @@ onMounted(fetchUserJobs);
 @keyframes loader16-animation {
   0% {
     transform: scale(0.8);
-    background-color: #a29bfe; 
-    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+    background-color: #a29bfe;
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7);
   }
 
   50% {
     transform: scale(1.2);
-    background-color: #6c5ce7; 
-    box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); 
+    background-color: #6c5ce7;
+    box-shadow: 0 0 0 10px rgba(108, 92, 231, 0);
   }
 
   100% {
     transform: scale(0.8);
-    background-color: #a29bfe; 
-    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+    background-color: #a29bfe;
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7);
   }
 }
-
 </style>

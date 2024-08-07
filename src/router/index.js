@@ -7,6 +7,9 @@ import JobView from "../views/JobView.vue";
 import DashboardPage from "../components/DashboardPage.vue";
 import ViewAll from "../components/ViewAll.vue";
 import JobDetails from "../components/JobDetails.vue";
+import SearchResult from "../components/SearchResult.vue"
+import axios from "axios";
+
 
 const routes = [
   {
@@ -33,6 +36,7 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: DashboardPage,
+    meta: { requiresAuth: true },
   },
   {
     path: "/view",
@@ -49,7 +53,15 @@ const routes = [
     path: "/job/:id",
     name:"JobDetails",
     component: JobDetails, 
-    props: true },
+    props: true 
+  },
+
+  {
+    path:"/job/search",
+    name:"search",
+    component:SearchResult
+  }
+
 ];
 
 const router = createRouter({
@@ -57,4 +69,15 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach(async (to, from, next) => {
+  const isAuthenticated = localStorage.getItem("token");
+  
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    // If route requires auth and user is not authenticated
+    next({ name: 'login' });
+  } else {
+    next();
+  }
+});
+// 4$Ly45HAZv$rENC
 export default router;

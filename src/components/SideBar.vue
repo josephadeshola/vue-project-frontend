@@ -170,6 +170,8 @@ export default {
         cancelButtonText: "Cancel",
       }).then((result) => {
         if (result.isConfirmed) {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
           this.$router.push("/login");
           this.$swal(
             "Logged Out",

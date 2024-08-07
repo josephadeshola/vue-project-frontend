@@ -50,7 +50,7 @@
           <p class="text-xl text-blue-700 mt-3 font-semibold py-1">description</p>
           <p>{{ job.description}}</p>
         </div>
-        <button class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md">Apply Now</button>
+        <button class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md" @click="applyNow">Apply Now</button>
       </div>
       <div v-else class="flex justify-center items-center h-screen">
 <div class="loader16">
@@ -70,6 +70,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import SideBar from "../components/SideBar.vue";
+import Swal from "sweetalert2"; 
 
 const job = ref(null);
 const route = useRoute();
@@ -77,12 +78,22 @@ const route = useRoute();
 const fetchJobDetails = async (id) => {
   try {
     const response = await axios.get(`http://127.0.0.1:8000/api/jobs/${id}`);
-    console.log(response);
+    // console.log(response);
     job.value = response.data.job;
   } catch (error) {
     console.error("Error fetching job details:", error);
   }
 };
+
+const applyNow =async ()=>{
+ const result = await Swal.fire({
+      title: "Job applied successfully!!!",
+      text: "congratulatons on the new appiled job 🤝🤝🤝",
+      icon: "success",
+      confirmButtonColor: "#3085d6",
+      confirmButtonText: "procees",
+    });
+}
 
 onMounted(() => {
   fetchJobDetails(route.params.id);
