@@ -2,6 +2,7 @@
 import { computed, ref } from "vue";
 import { useRoute } from "vue-router";
 import NavbarPage from "./NavbarPage.vue";
+import hiringGif from '../assets/Hiring.gif';
 
 const route = useRoute();
 const jobs = computed(() => {
@@ -49,8 +50,11 @@ const selectedJob = computed(() => jobs.value[0])
         </div>
       </div>
     </div>
-    <div v-else>
-      <p>No jobs found matching your search criteria.</p>
+    <div v-else class="mx-auto items-center flex justify-center">
+      <div>
+      <img :src="hiringGif" alt="">
+      <p class="font-bold text-center md:text-2xl ">No jobs found matching your search criteria.</p>
+      </div>
     </div>
   </div>
 </template>
