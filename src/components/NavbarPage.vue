@@ -13,8 +13,8 @@
             alt="Flowbite Logo"
           />
           <span
-            class="self-center md:text-2xl text-sm font-semibold whitespace-nowrap dark:text-black"
-            >JobList</span
+            class="self-center  md:text-xl text-sm font-bold whitespace-nowrap dark:text-black"
+            ><span class="text-blue-700">DRC</span>-JobList</span
           >
         </a>
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
