@@ -7,31 +7,10 @@ import CommunityIcon from "./icons/IconCommunity.vue";
 import SupportIcon from "./icons/IconSupport.vue";
 import ViewAll from "../components/ViewAll.vue";
 import { ref } from "vue";
-
-// Define reactive state
-const query = ref('');
-const location = ref('');
-console.log(location);
-
-const jobs = ref([]);
-
-// Function to search jobs
-async function searchJobs() {
-  try {
-    const response = await fetch(`http://127.0.0.1:8000/api/jobs/search?q=${encodeURIComponent(query.value)}&location=${encodeURIComponent(location.value)}`);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    const data = await response.json();
-    console.log(data);
-    
-    jobs.value = data;
-  } catch (error) {
-    console.error('Error fetching jobs:', error);
-  }
-}
-
-// Example usage
+import axios from "axios";
+import { useRoute, useRouter } from "vue-router";
+import NavbarPageVue from "./NavbarPage.vue";
+NavbarPageVue
 const jobCategories = ref([
   { name: "Software Development", count: 376 },
   { name: "Accounting/Finance", count: 305 },
@@ -43,55 +22,45 @@ const jobCategories = ref([
   { name: "CyberSecurity", count: 37 },
   { name: "Data Science", count: 396 },
 ]);
-
-// Use router and route if needed
-import { useRoute, useRouter } from "vue-router";
 const router = useRouter();
-const route = useRoute();
+const jobs = ref([]);
+const filteredJobs = ref([]);
+const query = ref("");
+const location = ref("");
 
-// You can use router.push("/job/search") here if needed
+const searchJobs = async () => {
+  try {
+    const response = await axios.get("http://127.0.0.1:8000/api/jobs");
+    const jobs = response.data.jobs;
+    if (!jobs || jobs.length === 0) {
+      console.log("No jobs found");
+      return;
+    }
+
+    filteredJobs.value = jobs.filter((job) => {
+      const isTitleMatch =
+        query.value === "" ||
+        job.title.toLowerCase().includes(query.value.toLowerCase());
+      const isLocationMatch =
+        location.value === "" ||
+        job.location.toLowerCase().includes(location.value.toLowerCase());
+      return isTitleMatch && isLocationMatch;
+    });
+    console.log(filteredJobs);
+    router.push({
+      name: "SearchResult",
+      query: { jobs: JSON.stringify(filteredJobs.value) },
+    });
+  } catch (error) {
+    console.error("Error fetching jobs:", error);
+  }
+};
 </script>
 
 
 <template>
   <div class="">
-    <nav class="!bg-white border-gray-200 fixed w-full shadow-md z-10">
-      <div
-        class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4"
-      >
-        <a
-          href="https://flowbite.com"
-          class="flex items-center space-x-3 rtl:space-x-reverse"
-        >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="h-5 md:h-8"
-            alt="Flowbite Logo"
-          />
-          <span
-            class="self-center md:text-2xl text-sm font-semibold whitespace-nowrap dark:text-black"
-            >JobList</span
-          >
-        </a>
-        <div class="flex items-center space-x-6 rtl:space-x-reverse">
-          <RouterLink
-            to="/login"
-            class="text-sm text-blue-600 dark:text-blue-500 font-semibold hover:underline"
-            >Login</RouterLink
-          >
-          <RouterLink
-            to="/register"
-            class="text-sm font-semibold hover:underline text-black"
-            >Register</RouterLink
-          >
-          <RouterLink
-            to="/dashboard"
-            class="text-sm font-semibold hover:underline text-black"
-            >Dashboard</RouterLink
-          >
-        </div>
-      </div>
-    </nav>
+  <NavbarPageVue/>
     <div class="relative pt-16">
       <img
         class="w-full object-cover md:h-screen h-96"
@@ -135,14 +104,7 @@ const route = useRoute();
         </div>
       </div>
     </div>
-    <!-- <ul v-if="jobs.length">
-      <li v-for="job in jobs" :key="job.id">
-        <h3>{{ job.title }}</h3>
-        <p>{{ job.location }}</p>
-        <p>{{ job.description }}</p>
-      </li>
-    </ul>
-    <p v-else>No jobs found.</p> -->
+
     <div class="text-center bg-blue-600 md:hidden block py-7">
       <p class="md:text-4xl text-xl text-white font-semibold">
         Unlock Your Career Potential

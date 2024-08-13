@@ -115,7 +115,6 @@
           </button>
         </li>
 
-        <!-- Other list items... -->
       </ul>
     </div>
   </aside>

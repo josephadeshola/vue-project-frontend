@@ -58,7 +58,7 @@ const routes = [
 
   {
     path:"/job/search",
-    name:"search",
+    name:"SearchResult",
     component:SearchResult
   }
 

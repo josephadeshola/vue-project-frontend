@@ -30,7 +30,7 @@
         <p class="font-bold mt-2 text-md">{{ job.title }}</p>
         <p class="text-sm text-blue-700 py-2 font-bold">{{ job.jobType }}</p>
         <div class="text-sm">{{ job.requirement }}</div>
-        <div class="flex gap-10 mt-5">
+        <div class="flex justify-between mt-5">
           <p class="font-bold text-xl">
             ${{ job.salary }}<span class="text-sm font-light">/monthly</span>
           </p>

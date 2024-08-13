@@ -259,7 +259,6 @@ const form = ref({
 
 });
 
-// Method to handle form submission
 
 const goToCompanyInfo = async () => {
   const user_id =JSON.parse(localStorage.getItem('user'));

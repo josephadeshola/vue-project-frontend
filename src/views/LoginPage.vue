@@ -134,7 +134,6 @@ const login = async () => {
       router.push("/dashboard");
     }, 4000);
   } catch (error) {
-    console.error(error.response);
     if (error.response && error.response.status === 401) {
       toast.error("Incorrect email or password");
     } else {

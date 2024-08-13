@@ -32,35 +32,44 @@
         <p class="font-bold text-xl">
           ${{ job.salary }}<span class="text-sm font-light">/monthly</span>
         </p>
-        <div
-          class=" px-2 py-3 my-6 bg-gray-100 shadow rounded-md"
-        >
+        <div class="px-2 py-3 my-6 bg-gray-100 shadow rounded-md">
           <p class="font-bold text-2xl">Job Details</p>
           <hr class="mt-2 border border-blue-600" />
-          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Company Name</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">
+            Company Name
+          </p>
           <p>{{ job.companyName }}</p>
           <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Email</p>
           <p>{{ job.email }}</p>
           <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Phone</p>
           <p>{{ job.phone }}</p>
-          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Company Location</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">
+            Company Location
+          </p>
           <p>{{ job.companyLocation }}</p>
           <p class="text-xl text-blue-700 mt-3 font-semibold py-1">Address</p>
           <p>{{ job.address }}</p>
-          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">description</p>
-          <p>{{ job.description}}</p>
+          <p class="text-xl text-blue-700 mt-3 font-semibold py-1">
+            description
+          </p>
+          <p>{{ job.description }}</p>
         </div>
-        <button class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md" @click="applyNow">Apply Now</button>
+        <button
+          class="bg-blue-700 font-semibold text-white w-full py-3 rounded-md"
+          @click="applyNow"
+        >
+          Apply Now
+        </button>
       </div>
       <div v-else class="flex justify-center items-center h-screen">
-<div class="loader16">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
-</div>
+        <div class="loader16">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -70,7 +79,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 import SideBar from "../components/SideBar.vue";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 
 const job = ref(null);
 const route = useRoute();
@@ -85,15 +94,15 @@ const fetchJobDetails = async (id) => {
   }
 };
 
-const applyNow =async ()=>{
- const result = await Swal.fire({
-      title: "Job applied successfully!!!",
-      text: "congratulatons on the new appiled job 🤝🤝🤝",
-      icon: "success",
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "procees",
-    });
-}
+const applyNow = async () => {
+  const result = await Swal.fire({
+    title: "Job applied successfully!!!",
+    text: "congratulatons on the new appiled job 🤝🤝🤝",
+    icon: "success",
+    confirmButtonColor: "#3085d6",
+    confirmButtonText: "procees",
+  });
+};
 
 onMounted(() => {
   fetchJobDetails(route.params.id);
@@ -101,7 +110,6 @@ onMounted(() => {
 </script>
 
 <style scoped>
-
 .loader16 {
   display: flex;
   align-items: center;
@@ -115,7 +123,7 @@ onMounted(() => {
   width: 20px;
   margin: 4px;
   border-radius: 10px;
-  background-color: #a29bfe; 
+  background-color: #a29bfe;
   animation: loader16-animation 1.5s infinite ease-in-out;
 }
 
@@ -138,21 +146,20 @@ onMounted(() => {
 @keyframes loader16-animation {
   0% {
     transform: scale(0.8);
-    background-color: #a29bfe; 
-    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+    background-color: #a29bfe;
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7);
   }
 
   50% {
     transform: scale(1.2);
-    background-color: #6c5ce7; 
-    box-shadow: 0 0 0 10px rgba(108, 92, 231, 0); 
+    background-color: #6c5ce7;
+    box-shadow: 0 0 0 10px rgba(108, 92, 231, 0);
   }
 
   100% {
     transform: scale(0.8);
-    background-color: #a29bfe; 
-    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7); 
+    background-color: #a29bfe;
+    box-shadow: 0 0 0 0 rgba(162, 155, 254, 0.7);
   }
 }
-
 </style>
