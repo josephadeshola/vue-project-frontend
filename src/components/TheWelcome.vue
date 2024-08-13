@@ -195,7 +195,14 @@ const searchJobs = async () => {
       <div class="container mx-auto px-4">
         <div class="flex flex-wrap justify-between">
           <div class="w-full md:w-1/3 mb-6 md:mb-0">
+           <div class="flex gap-2 mb-5">
+           <img
+            src="../assets/Advantages.gif"
+            class="h-5 md:h-9 rounded"
+            alt="Flowbite Logo"
+          />
             <h5 class="font-bold text-lg mb-2">Company Name</h5>
+           </div>
             <p class="text-gray-400">Address: 123 Main Street, City, State</p>
             <p class="text-gray-400">Email: josephay125d@gmail.com</p>
             <p class="text-gray-400">Phone: +234 8069697526</p>

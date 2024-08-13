@@ -3,20 +3,20 @@
       <div
         class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4"
       >
-        <a
-          href="https://flowbite.com"
+        <RouterLink
+          to="/"
           class="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            class="h-5 md:h-8"
+            src="../assets/Advantages.gif"
+            class="h-5 md:h-9"
             alt="Flowbite Logo"
           />
           <span
             class="self-center  md:text-xl text-sm font-bold whitespace-nowrap dark:text-black"
             ><span class="text-blue-700">DRC</span>-JobList</span
           >
-        </a>
+        </RouterLink>
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
           <RouterLink
             to="/login"
