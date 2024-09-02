@@ -16,6 +16,9 @@
         </div>
         <div class="" v-if="!loading">
           <div v-if="userJobs.length === 0" class="text-center mt-1">
+            <div class="">
+              <img class="h-96 mx-auto" src="../assets\Empty-rafiki.png" alt="">
+            </div>
             <p class="text-gray-600 text-xl">
               You have not posted any jobs yet.
             </p>

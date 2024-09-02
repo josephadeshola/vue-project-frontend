@@ -102,6 +102,7 @@ const applyNow = async () => {
     confirmButtonColor: "#3085d6",
     confirmButtonText: "procees",
   });
+  window.location.href="https://www.linkedin.com/jobs/"
 };
 
 onMounted(() => {

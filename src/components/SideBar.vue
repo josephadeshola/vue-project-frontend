@@ -93,7 +93,7 @@
             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group"
           >
             <i class="bi bi-view-list text-white"></i>
-            <span class="ms-3">All jobs</span>
+            <span class="ms-3">Jobs</span>
           </RouterLink>
         </li>
         <li>

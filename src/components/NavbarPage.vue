@@ -7,11 +7,6 @@
           to="/"
           class="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img
-            src="../assets/Advantages.gif"
-            class="h-5 md:h-9"
-            alt="Flowbite Logo"
-          />
           <span
             class="self-center  md:text-xl text-sm font-bold whitespace-nowrap dark:text-black"
             ><span class="text-blue-700">DRC</span>-JobList</span
